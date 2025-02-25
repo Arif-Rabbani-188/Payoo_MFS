@@ -2,7 +2,8 @@ let addMoneyBtn = document.getElementById("addMoneyBtn");
 let mainBalance = document.getElementById("main-balance");
 let sum = parseInt(mainBalance.innerText);
 
-addMoneyBtn.addEventListener("click", function () {
+addMoneyBtn.addEventListener("click", function (e) {
+  e.preventDefault();
   let addMoneyAmount = document.getElementById("addMoneyAmount").value;
   addMoneyAmount = parseInt(addMoneyAmount);
 
@@ -15,7 +16,8 @@ addMoneyBtn.addEventListener("click", function () {
 
 let cashOutBtn = document.getElementById("cashOutBtn");
 
-cashOutBtn.addEventListener("click", function () {
+cashOutBtn.addEventListener("click", function (e) {
+  e.preventDefault();
   let cashOutAmount = document.getElementById("cashOutAmount").value;
 
   cashOutAmount = parseInt(cashOutAmount);
@@ -27,23 +29,24 @@ cashOutBtn.addEventListener("click", function () {
   mainBalance.innerText = sum;
 });
 
-
 let transferBtn = document.getElementById("transferBtn");
 
+transferBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  let transferAmount = parseInt(
+    document.getElementById("transferAmount").value
+  );
 
-transferBtn.addEventListener("click", function (){
-    let transferAmount = parseInt(document.getElementById("transferAmount").value);
+  sum = sum - transferAmount;
 
-    sum = sum - transferAmount;
+  mainBalance.innerText = sum;
+});
 
-    mainBalance.innerText = sum;
-})
+document.getElementById("billBtn").addEventListener("click", function (e) {
+  e.preventDefault();
+  let billAmount = parseInt(document.getElementById("billAmount").value);
 
+  sum = sum - billAmount;
 
-document.getElementById("billBtn").addEventListener("click", function (){
-    let billAmount = parseInt(document.getElementById("billAmount").value);
-
-    sum = sum - billAmount;
-
-    mainBalance.innerText = sum;
-})
+  mainBalance.innerText = sum;
+});
