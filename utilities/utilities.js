@@ -32,7 +32,7 @@ function setInnerText(id, value) {
     if (sum > 0) {
       document.getElementById(id).innerText = sum;
     } else {
-      alert("Insaficient balance");
+      alert("Insufficient balance");
     }
   } else {
     alert("Negative amount is not allowed");
@@ -45,7 +45,7 @@ function setInnerTextNeg(id, value) {
     if (sum > 0) {
       document.getElementById(id).innerText = sum;
     } else {
-      alert("Insaficient balance");
+      alert("Insufficient balance");
     }
   } else {
     alert("Negative amount is not allowed");

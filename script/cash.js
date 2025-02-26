@@ -13,6 +13,10 @@ addMoneyBtn.addEventListener("click", function (e) {
       setInnerText("main-balance", "addMoneyAmount");
 
       transactionBox.insertBefore(transaction("Add Money", getValueById("addMoneyAmount")), transactionBox.children[0]);
+
+      addNumber = "";
+      let pin = getValueById("addPin");
+      pin = "";
     }else{
       alert("Enter Valid Pin");
     }
