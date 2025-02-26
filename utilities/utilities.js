@@ -52,17 +52,28 @@ function setInnerTextNeg(id, value) {
   }
 }
 
-function transaction(source, amount) {
+function transaction(img, source, ft,  amount, number, option) {
   let div = document.createElement("div");
+  let d = new Date();
 
   div.innerHTML = `
-      <img class="p-3 rounded-full bg-[#f4f5f7]" src="assets/wallet1.png" alt="">
+      <img class="p-3 rounded-full bg-[#f4f5f7]" src=${img} alt="">
       <div>
-            <h1 class="font-bold">${source}</h1>
+            <h1 class="font-bold">${source} ${ft} ${option}</h1>
             <p class="text-sm">Amount: $${amount}</p>
+            <p class="text-sm">${ft}: ${number}</p>
+            <p class="text-sm">${d.getDate()}/${d.getMonth()+1}/${d.getFullYear()} at ${d.getHours()}:${d.getMinutes()}</p>
       </div>
     `;
 
-    div.classList.add("flex", "items-center", "bg-white", "gap-1", "border-2", "rounded-xl", "p-3")
-    return div;
+  div.classList.add(
+    "flex",
+    "items-center",
+    "bg-white",
+    "gap-1",
+    "border-2",
+    "rounded-xl",
+    "p-3"
+  );
+  return div;
 }
