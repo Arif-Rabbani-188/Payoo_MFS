@@ -10,6 +10,10 @@ let payBillBox = document.getElementById("pay-bill-box");
 
 let trasactionsBox = document.getElementById("transactions-box");
 
+document.getElementById("logout").addEventListener("click", function(){
+    window.location.href = "index.html"
+})
+
 
 // section ids
 
