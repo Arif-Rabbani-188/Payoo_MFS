@@ -4,14 +4,17 @@ let sum = parseInt(mainBalance.innerText);
 
 addMoneyBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  let addMoneyAmount = document.getElementById("addMoneyAmount").value;
-  addMoneyAmount = parseInt(addMoneyAmount);
+  let addNumber = document.getElementById("addPhoneNumber").value;
 
-  sum = sum + addMoneyAmount;
-
-  console.log(sum);
-
-  mainBalance.innerText = sum;
+  if(validPhoneCheck(addNumber)){
+    if(pinCheck(getValueById("addPin"))){
+      setInnerText("main-balance", "addMoneyAmount")
+    }else{
+      alert("Enter Valid Pin");
+    }
+  }else{
+    alert("Enter Valid Number");
+  }
 });
 
 let cashOutBtn = document.getElementById("cashOutBtn");
