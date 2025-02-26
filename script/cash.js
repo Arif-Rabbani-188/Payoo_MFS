@@ -1,6 +1,8 @@
 let addMoneyBtn = document.getElementById("addMoneyBtn");
 let mainBalance = document.getElementById("main-balance");
 let sum = parseInt(mainBalance.innerText);
+let transactionBox = document.getElementById("transaction-box");
+
 
 addMoneyBtn.addEventListener("click", function (e) {
   e.preventDefault();
@@ -8,7 +10,9 @@ addMoneyBtn.addEventListener("click", function (e) {
 
   if(validPhoneCheck(addNumber)){
     if(pinCheck(getValueById("addPin"))){
-      setInnerText("main-balance", "addMoneyAmount")
+      setInnerText("main-balance", "addMoneyAmount");
+
+      transactionBox.insertBefore(transaction("Add Money", getValueById("addMoneyAmount")), transactionBox.children[0]);
     }else{
       alert("Enter Valid Pin");
     }
@@ -21,35 +25,53 @@ let cashOutBtn = document.getElementById("cashOutBtn");
 
 cashOutBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  let cashOutAmount = document.getElementById("cashOutAmount").value;
+  let cashOutNumber = document.getElementById("cashOutNumber").value;
 
-  cashOutAmount = parseInt(cashOutAmount);
+  if(validPhoneCheck(cashOutNumber)){
+    if(pinCheck(getValueById("cashOutPin"))){
+      setInnerTextNeg("main-balance", "cashOutAmount");
 
-  console.log(cashOutAmount);
-
-  sum = sum - cashOutAmount;
-
-  mainBalance.innerText = sum;
+      transactionBox.insertBefore(transaction("Cash Out", getValueById("cashOutAmount")), transactionBox.children[0]);
+    }else{
+      alert("Enter Valid Pin");
+    }
+  }else{
+    alert("Enter Valid Number");
+  }
 });
 
 let transferBtn = document.getElementById("transferBtn");
 
 transferBtn.addEventListener("click", function (e) {
   e.preventDefault();
-  let transferAmount = parseInt(
-    document.getElementById("transferAmount").value
-  );
+  let sendNumber = document.getElementById("sendNumber").value;
 
-  sum = sum - transferAmount;
+  if(validPhoneCheck(sendNumber)){
+    if(pinCheck(getValueById("transferPin"))){
+      setInnerTextNeg("main-balance", "transferAmount");
 
-  mainBalance.innerText = sum;
+      transactionBox.insertBefore(transaction("Send Money", getValueById("transferAmount")), transactionBox.children[0]);
+    }else{
+      alert("Enter Valid Pin");
+    }
+  }else{
+    alert("Enter Valid Number");
+  }
 });
 
 document.getElementById("billBtn").addEventListener("click", function (e) {
   e.preventDefault();
-  let billAmount = parseInt(document.getElementById("billAmount").value);
+  let billerNumber = document.getElementById("billerNumber").value;
 
-  sum = sum - billAmount;
+  if(validPhoneCheck(billerNumber)){
+    if(pinCheck(getValueById("billPin"))){
+      setInnerTextNeg("main-balance", "billAmount");
 
-  mainBalance.innerText = sum;
+      transactionBox.insertBefore(transaction("Pay Bill", getValueById("billAmount")), transactionBox.children[0]);
+    }else{
+      alert("Enter Valid Pin");
+    }
+  }else{
+    alert("Enter Valid Number");
+  }
 });
